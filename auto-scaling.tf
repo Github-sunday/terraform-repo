@@ -3,6 +3,7 @@ resource "aws_launch_template" "terraform-launch-template" {
   image_id      = "ami-0b026d11830afcbac"
   instance_type = "t2.micro"
   key_name = "trial-key-pair"
+  user_data = filebase64("code-deploy/code-deploy.sh")
 
   vpc_security_group_ids = [aws_security_group.terraform-instance-sg.id]
 
